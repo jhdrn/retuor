@@ -1,0 +1,6 @@
+[submodule "libs/history.js"]
+	path = libs/history.js
+	url = https://github.com/browserstate/history.js.git
+[submodule "libs/DefinitelyTyped"]
+	path = libs/DefinitelyTyped
+	url = https://github.com/borisyankov/DefinitelyTyped.git

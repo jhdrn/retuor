@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+
+    <script src="../libs/jquery/jquery-1.10.1.min.js"></script>
+    <script src="/libs/history.js/scripts/bundled/html5/jquery.history.js"></script>
+    <script src="../src/retuor.js"></script>
+    
+
+    <button id="button1" />
+    <button id="button2" />
+    <button id="button3" />
+    <script>
+
+        var logCount = 0;
+        function log(text) {
+            if (console) {
+                console.log(logCount++ + ' ' + text);
+            }
+        }
+
+        retuor.setBasePath('tests/');
+
+        retuor.route('somewhere/else', function () {
+            log('route: somewhere/else');
+            $('#button1').text('navigate to tests.html').unbind('click').click(function () {
+                log('navigate to tests.html');
+                retuor.navigate('tests.html');
+            });
+            return true;
+        });
+        retuor.route('tests.html', function () {
+            log('route: tests.html');
+            $('#button1').text('navigate to tests2.html').unbind('click').click(function () {
+                log('navigate to tests2.html');
+                retuor.navigate('tests2.html');
+            });
+            $('#button2').text('forward to tests2.html').unbind('click').click(function () {
+                log('forward to tests2.html');
+                retuor.forward('tests2.html');
+            });
+            $('#button3').text('redirect to tests2.html').unbind('click').click(function () {
+                log('redirect to tests2.html');
+                retuor.redirect('tests2.html');
+            });
+            return true;
+        });
+
+        retuor.route('tests2.html', function () {
+            log('route: tests2.html');
+            $('#button1').text('navigate to somewhere/else').unbind('click').click(function () {
+                log('navigate to somewhere/else');
+                retuor.navigate('somewhere/else');
+            });
+            $('#button2').text('forward to somewhere/else').unbind('click').click(function () {
+                log('forward to somewhere/else');
+                retuor.forward('somewhere/else');
+            });
+            $('#button3').text('redirect to somewhere/else').unbind('click').click(function () {
+                log('redirect to somewhere/else');
+                retuor.redirect('somewhere/else');
+            });
+        });
+
+        retuor.route('{*any}', function () {
+            log('route: {*any}');
+        });
+
+        retuor.run();
+
+    </script>
+</body>
+</html>
