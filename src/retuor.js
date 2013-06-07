@@ -9,7 +9,10 @@ var retuor;
     * Sets the base path.
     */
     function setBasePath(basePath) {
-        _basePath = '/' + trimSlashes(basePath) + '/';
+        basePath = trimSlashes(basePath);
+        if (basePath.length > 0) {
+            _basePath = '/' + trimSlashes(basePath) + '/';
+        }
     }
     retuor.setBasePath = setBasePath;
 

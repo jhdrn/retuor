@@ -14,7 +14,10 @@ module retuor {
      * Sets the base path.
      */
     export function setBasePath(basePath: string): void {
-        _basePath = '/' + trimSlashes(basePath) + '/';
+        basePath = trimSlashes(basePath);
+        if (basePath.length > 0) {
+            _basePath = '/' + trimSlashes(basePath) + '/';
+        }
     }
 
     export function run(): void;

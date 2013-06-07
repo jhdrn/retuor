@@ -60,9 +60,6 @@
     <Content Include="tests\tests.js">
       <DependentUpon>tests.ts</DependentUpon>
     </Content>
-    <Content Include="tests\tests.min.js">
-      <DependentUpon>tests.ts</DependentUpon>
-    </Content>
     <XamlAppDef Include="tests\tests.ts" />
   </ItemGroup>
   <ItemGroup>
